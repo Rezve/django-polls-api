@@ -6,6 +6,7 @@ from rest_framework.generics import (
     UpdateAPIView,
     CreateAPIView,
 )
+from rest_framework.response import Response
 
 from polls.models import Question, Choice
 from .serializers import PollsListSerializer, ChoiceSerializer, ChoiceVoteSerializer
@@ -59,14 +60,15 @@ class ChoiceCreateView(CreateAPIView):
     queryset = Choice.objects.all()
     serializer_class = ChoiceSerializer
 
-class ChoiceVoteView(CreateAPIView):
+class ChoiceVoteView(UpdateAPIView):
     """
         Give vote
         api/polls/choice/vote/2
     """
-    #queryset = Choice.objects.all()
+    queryset = Choice.objects.all()
     serializer_class = ChoiceVoteSerializer
 
+"""
     def perform_create(self, serializer):
         question = Question.objects.get(pk=self.kwargs['pk'])
         try:
@@ -80,7 +82,7 @@ class ChoiceVoteView(CreateAPIView):
             selected_choice.save()
 
         serializer.save()
-
+"""
 class ChoiceListView(ListAPIView):
     """
         Get Choice of a single poll

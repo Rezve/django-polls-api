@@ -25,7 +25,7 @@ api/polls/2/delete/
 api/polls/choice/create/
 
 ### Give vote
-api/polls/choice/vote/2
+api/polls/2/choice/vote/2
 
 ### Get Choice of a single poll
-api/polls/choice/2
+api/polls/2/choice/
